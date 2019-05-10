@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jesseohlman/node-template.git"
+    "url": "git+https://github.com/jesseohlman/[repo-name].git"
   },
   "author": "Jesse Ohlman",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jesseohlman/node-template/issues"
+    "url": "https://github.com/jesseohlman/[repo-name]/issues"
   },
-  "homepage": "https://github.com/jesseohlman/node-template#readme"
+  "homepage": "https://github.com/jesseohlman/[repo-name]#readme"
 }
