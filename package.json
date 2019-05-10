@@ -1,19 +1,41 @@
 {
-  "name": "template",
+  "name": "edm-tracker",
   "version": "1.0.0",
-  "description": "a template",
-  "main": "\u001b[D\u001bserver.js)",
+  "description": "for the love of the dub",
+  "main": "\u001b[D\u001b[B\u001bserver.js)",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jesseohlman/[repo-name].git"
+    "url": "git+https://github.com/jesseohlman/edm-tracker.git"
   },
   "author": "Jesse Ohlman",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jesseohlman/[repo-name]/issues"
+    "url": "https://github.com/jesseohlman/edm-tracker/issues"
   },
-  "homepage": "https://github.com/jesseohlman/[repo-name]#readme"
+  "homepage": "https://github.com/jesseohlman/edm-tracker#readme",
+  "devDependencies": {
+    "jasmine": "^3.4.0",
+    "faker": "^4.1.0",
+    "request": "^2.88.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-flash": "0.0.2",
+    "express-session": "^1.16.1",
+    "express-validator": "^5.3.1",
+    "http": "0.0.0",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.11.0",
+    "sequelize": "^5.8.5",
+    "sequelize-cli": "^5.4.0"
+  }
 }
