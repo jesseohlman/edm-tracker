@@ -1,9 +1,22 @@
 <div>
-        <h3>Top (list's genre) songs of the week</h3>
+        <h3>Top <%= songs[0].genre %> songs of the week</h3>
         <div class="float-right" width="25%">Advertisments</div><br/>
         <div><a target="_blank" href="https://www.fritolay.com/snacks/buy-online.htm"><img src="https://englishinamerica.files.wordpress.com/2013/05/vintage-ad.png" alt="advertisment", width="25%" class="float-right"></a></div>
         <div>
-            <iframe class="float-left" width="75%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/578779071&color=%23387187&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+            <% songs.forEach((song) => { %>
+                <form action="/songs/play" method="POST" id="myform">
+                    <input type="hidden" name="song" value="<%= song %>"/>
+                    <input type="hidden" name="play" value="play"/>
+                    <div onclick="document.getElementById('myform').submit()">
+                        <iframe type="submit" class="float-left" width="75%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<%= song.sound %>&color=%23387187&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
+                    </div>
+                </form>
+                <div>number of plays: <%= song.plays %></div>
+            <% }) %>
+
+
+            <!--<iframe class="float-left" width="75%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/578779071&color=%23387187&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
             <iframe class="float-left" width="75%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/274793736&color=%23387187&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+            -->
         </div>
     </div>

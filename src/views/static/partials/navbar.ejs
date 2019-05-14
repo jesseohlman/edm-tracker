@@ -3,12 +3,23 @@
         <a class="btn btn-primary" href="/">Home</a>
         <% if(currentUser){ %> 
             <a class="btn btn-primary" href="/users/profile">Profile(!)</a>
+            <% if(currentUser.role === "member"){ %>
+                <a class="btn btn-primary" href="/songs/new">Add a song</a>
+            <% } %>
         <% } else { %>
             <a class="btn btn-primary" href="/users/signinForm">Sign In</a>
             <a class="btn btn-primary" href="/users/signup">Sign Up</a>
 
         <% } %>
-        <a class="btn btn-primary" href=""></a>
+
+
+
+        <a class="btn btn-primary" href="/songs/topDubstep">Dubstep</a>
+        <a class="btn btn-primary" href="/songs/topHouse">House</a>
+        <a class="btn btn-primary" href="/songs/topPsytrance">Psytrance</a>
+        <a class="btn btn-primary" href="/songs/topD&B">D&B</a>
+        <a class="btn btn-primary" href="/songs/topExperimental">Experimental</a>
+
 
     </nav>
 </div>
