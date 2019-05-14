@@ -5,7 +5,7 @@ const routeConfig = require("./config/route-config");
 const mainRoute = require("./routes/static");
 
 appConfig.init(app, express);
-//routeConfig.init(app);
+routeConfig.init(app);
 app.use("/", mainRoute);
 
 module.exports = app;

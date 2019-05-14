@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../static/partials/header.ejs %>
+    <% include ../static/partials/navbar.ejs %>
+
+</head>
+
+<body>
+    <% include ../static/partials/messages.ejs %>
+
+  <div class="card">
+      <div class="card-header font-weight-bold"><%= currentUser.username %>'s Profile</div>
+      <div class="card-subtitle mb-2 text-muted"><small><%= currentUser.email %></small></div>
+      <div class="card-body">
+        <p>profile pic here <%= currentUser.pic %> picture</p>
+        <div>favorite genres: <%= currentUser.favorite1 %>, <%= currentUser.favorite2 %>, <%= currentUser.favorite3 %></div>
+        <a href="/users/customize" class="card-link">Update your info</a>
+      </div>
+  </div>
+</body>
+
+<% include ../static/partials/baseScripts.ejs %>
+
+</html>

@@ -1,0 +1,26 @@
+<html>
+<head>
+        <% include ../static/partials/header.ejs %>
+        <% include ../static/partials/navbar.ejs %>
+</head>
+
+<body>
+        <% include ../static/partials/messages.ejs %>
+
+    <form method="post" action="/users/signin">
+        <div class="form-group">
+            <label for="email">email:</label>
+            <input type="email" name="email" class="form-control" aria-describedby="emailHelp"/>
+        </div>
+
+        <div class="form-group">
+            <label for="password">password:</label>
+            <input type="password" name="password" class="form-control" aria-describedby="passwordHelp"/>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sign In</button>
+    </form>
+</body>
+<% include ../static/partials/baseScripts.ejs %>
+
+</html>

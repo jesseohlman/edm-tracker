@@ -1,0 +1,60 @@
+<html>
+<head>
+        <% include ../static/partials/header.ejs %>
+        <% include ../static/partials/navbar.ejs %>
+</head>
+
+<body>
+    <% include ../static/partials/messages.ejs %>
+
+    <h1>Next customize your profile to your preferences!</h1>
+    <form method="post" action="/users/update">
+        <div class="form-group">
+            <label for="favorite1">Favorite genre:</label>
+                <select name="favorite1" class="form-control">
+                    <option value="dubstep">Dubstep</option>
+                    <option value="house">House</option>
+                    <option value="psytrance">Psyrance</option>
+                    <option value="d&b">D&B</option>
+                    <option value="experimental">Experimental</option>
+                </select>
+        </div>
+
+        <div class="form-group">
+            <label for="favorite2">2nd favorite genre:</label>
+                <select name="favorite2" class="form-control">
+                    <option value="dubstep">Dubstep</option>
+                    <option value="house">House</option>
+                    <option value="psytrance">Psyrance</option>
+                    <option value="d&b">D&B</option>
+                    <option value="experimental">Experimental</option>
+                </select>
+        </div>
+
+        <div class="form-group">
+            <label for="favorite3">3rd favorite genre:</label>
+                <select name="favorite3" class="form-control">
+                    <option value="dubstep">Dubstep</option>
+                    <option value="house">House</option>
+                    <option value="psytrance">Psyrance</option>
+                    <option value="d&b">D&B</option>
+                    <option value="experimental">Experimental</option>
+                </select>
+        </div>
+
+        <div class="form-group">
+            <label for="pic">Choose your profile picture:</label>
+            <select name="pic" class="form-control">
+                <option value="bear">Bear Pic</option>
+                <option value="dog">Dog Pic</option>
+                <option value="cat">Cat Pic</option>
+                <option value="bean">Bean Pic</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+<% include ../static/partials/baseScripts.ejs %>
+
+</html>

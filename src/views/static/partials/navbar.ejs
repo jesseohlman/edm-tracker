@@ -1,0 +1,14 @@
+<div>
+    <nav>
+        <a class="btn btn-primary" href="/">Home</a>
+        <% if(currentUser){ %> 
+            <a class="btn btn-primary" href="/users/profile">Profile(!)</a>
+        <% } else { %>
+            <a class="btn btn-primary" href="/users/signinForm">Sign In</a>
+            <a class="btn btn-primary" href="/users/signup">Sign Up</a>
+
+        <% } %>
+        <a class="btn btn-primary" href=""></a>
+
+    </nav>
+</div>
