@@ -17,12 +17,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    favorites: {
+    favoriteCount: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0
     },
-    plays: {
+    playCount: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0
@@ -30,6 +30,22 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Song.associate = function(models) {
     // associations can be defined here
+
+    Song.hasMany(models.Favorite, {
+      foreignKey: "songId",
+      as: "favorites"
+    });
+
+    Song.prototype.getFavorites = function(userId){
+      if(!this.favorites){return false}
+      var favCheck = this.favorites.filter((fav) => fav.userId === userId);
+
+      if(favCheck[0]){
+        return true;
+      } else {
+        return false;
+      }
+    }
   };
   return Song;
 };

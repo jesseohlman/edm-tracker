@@ -1,4 +1,6 @@
 const Song = require("./models").Song;
+const Favorite = require("../db/models").Favorite;
+
 
 module.exports = {
     addSong(req, callback){
@@ -16,7 +18,12 @@ module.exports = {
     },
 
     getSongs(genre, callback){
-        Song.findAll({where: {genre: genre}})
+        Song.findAll({ include: [{
+            model: Favorite,
+             as: "favorites",
+            
+            }],  where: {genre: genre}
+        })
         .then((songs) => {
             callback(null, songs);
         })
@@ -30,7 +37,7 @@ module.exports = {
         var playsArr = songs;
 
         playsArr.sort(function(a, b){
-            return a.plays - b.plays;
+            return a.playCount - b.playCount;
         });
 
        callback(null, playsArr);
@@ -41,8 +48,8 @@ module.exports = {
         var currentSong = req.body.song;
 
         currentSong.Update({
-            plays: req.body.play || currentSong.plays,
-            favorites: req.body.favorite || currentSong.favorites
+            playCount: req.body.play || currentSong.playCount,
+            favoriteCount: req.body.favorite || currentSong.favoriteCount
         }).then((song) => {
             callback(null, song);
         })
