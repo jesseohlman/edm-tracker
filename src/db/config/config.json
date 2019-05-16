@@ -16,10 +16,11 @@
     "logging": false
   },
   "production": {
-    "username": "root",
+    "username": "postgres",
     "password": null,
-    "database": "database_production", 
+    "database": "edm-tracker-deploy", 
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres",
+    "use_env_variable": "DATABASE_URL"
   }
 }
