@@ -24,8 +24,8 @@ module.exports = {
                 req.flash("error", err);
                 res.redirect("/");
             } else {
-                req.flash("notice", "You've successfully created an account!");
-                req.redirect("/");
+                req.flash("notice", "You've successfully updated your account");
+                res.redirect("/users/profile");
             }
         })
     },
