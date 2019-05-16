@@ -4,7 +4,8 @@
   "description": "for the love of the dub",
   "main": "\u001b[D\u001b[B\u001bserver.js)",
   "scripts": {
-    "test": "set NODE_ENV=test&& jasmine"
+    "test": "set NODE_ENV=test&& jasmine",
+    "start": "node src/server.js" 
   },
   "repository": {
     "type": "git",
