@@ -19,7 +19,6 @@ module.exports = {
     },
 
     update(req, res, next){
-        console.log(`req.body.user: ${req.body.user} , userId: ${req.body.userId} `);
         userQueries.customizeUser(req, (err, user) => {
             if(err){
                 req.flash("error", err);

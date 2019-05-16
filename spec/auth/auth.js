@@ -1,21 +1,18 @@
-const User  = require("../../src/db/models").User;
 
 module.exports = {
     fakeIt(app){
-        let username, email, id, role, favorite1, favorite2, favorite3, pic;
+        let username, email, id, role,// favorite1, favorite2, favorite3, pic;
 
-        function middleware(req, res, next){
-            User.findOne({where: {email: req.body.email}})
-            .then((user) => {
+        middleware = (req, res, next) => {
 
                 username = req.body.username || username;
                 email = req.body.email || email;
-                id = user.id || id;
+                id = req.body.userId || id;
                 role = req.body.role || role;
-                favorite1 = req.body.favorite1 || favorite1;
+               /* favorite1 = req.body.favorite1 || favorite1;
                 favorite2 = req.body.favorite2 || favorite2;
                 favorite3 = req.body.favorite3 || favorite3;
-                pic = req.body.pic || pic;
+                pic = req.body.pic || pic;*/
 
                 if(id && id !== 0){
                     req.user = {
@@ -23,17 +20,16 @@ module.exports = {
                         "email": email,
                         "id": id,
                         "role": role,
-                        "favorite1": favorite1,
+                       /* "favorite1": favorite1,
                         "favorite2": favorite2,
                         "favorite3": favorite3,
-                        "pic": pic
+                        "pic": pic*/
                     }
                 } else if(id === 0) {
                     delete req.user;
                 }
 
                 if(next){next()}
-            });
         }
 
         function route(req, res){

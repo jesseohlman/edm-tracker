@@ -1,6 +1,8 @@
 const request = require("request");
 const sequelize = require("../../src/db/models").sequelize;
 const base = "http://localhost:3000";
+const server = require("../../src/server");
+
 
 const Song = require("../../src/db/models").Song;
 const User = require("../../src/db/models").User;
@@ -28,7 +30,19 @@ describe("songs : routes", () => {
                     sound: "7654321"
                 }).then((song) => {
                     this.song = song;
-                    done();
+                    
+                    request.get({
+                        url: "http://localhost:3000/auth/fake",
+                        form: {
+                          username: this.user.username,
+                          role: this.user.role,
+                          userId: this.user.id,
+                          email: this.user.email
+                        }
+                      },
+                      (err, res, body) => {
+                        done();
+                      });
                 })
             })
             .catch((err) => {
@@ -55,9 +69,11 @@ describe("songs : routes", () => {
                 .then((song) => {
                     expect(song).not.toBeNull();
                     expect(song.genre).toBe("dubstep");
+                    done();
                 })
                 .catch((err) => {
                     console.log(err);
+                    done();
                 });
             });
         });
@@ -66,7 +82,7 @@ describe("songs : routes", () => {
 
     describe("/songs/top[genre]", () => {
         it("should render a view with the top songs of the genre", (done) => {
-            request(`${base}/songs/topDubstep`, (err, res, next) => {
+            request(`${base}/songs/topDubstep`, (err, res, body) => {
                 expect(body).toContain("Top dubstep");
                 done();
             })
@@ -75,7 +91,7 @@ describe("songs : routes", () => {
 
     describe("/songs/new", () => {
         it("should render a view with input to add a new song", (done) => {
-            request(`${base}/songs/new`, (err, res, next) => {
+            request(`${base}/songs/new`, (err, res, body) => {
                 expect(body).toContain("Add a new song");
                 done();
             })

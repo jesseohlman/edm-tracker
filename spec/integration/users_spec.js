@@ -2,6 +2,7 @@ const request = require("request");
 const sequelize = require("../../src/db/models").sequelize;
 const User = require("../../src/db/models").User;
 const base = "http://localhost:3000"
+const server = require("../../src/server");
 
 describe("user : routes", () => {
 
@@ -13,10 +14,23 @@ describe("user : routes", () => {
             User.create({
                 username: "bob",
                 email: "bob@gmail.com",
-                password: "1234567890"
+                password: "1234567890",
+                role: "member"
             }).then((user) => {
                 this.user = user;
-                done();
+
+                request.get({
+                    url: "http://localhost:3000/auth/fake",
+                    form: {
+                      username: this.user.username,
+                      role: this.user.role,
+                      userId: this.user.id,
+                      email: this.user.email
+                    }
+                  },
+                  (err, res, body) => {
+                    done();
+                  })
             })
         })
         .catch((err) => {
@@ -31,7 +45,6 @@ describe("user : routes", () => {
             request.get(`${base}/users/signup`, (err, res, body) => {
                 expect(body).toContain("email");
                 expect(body).toContain("password");
-                console.log(`\n\n ${err} \n`);
                 done();
             });
         });
@@ -54,7 +67,7 @@ describe("user : routes", () => {
                 User.findOne({where: {email: "123@gmail.com"}})
                 .then((user) => {
                     expect(user).not.toBeNull();
-                    //expect(user.username).toBe("toby");
+                    expect(user.username).toBe("toby");
                     done();
                 })
                 .catch((err) => {
@@ -73,7 +86,7 @@ describe("user : routes", () => {
                     password: "1234567890"
                 }
             };
-
+            
             request.post(options, (err, res, body) => {
                 User.findOne({where: {username: "toby"}})
                 .then((user) => {
@@ -112,15 +125,16 @@ describe("user : routes", () => {
                 form: {
                     favorite1: "dubstep",
                     favorite2: "house",
-                    pic: "birdy"
+                    favorite3: "psytrance",
+                    pic: "bean"
                 }
             };
 
             request.post(options, (err, res, body) => {
-                User.findOne({where: {pic: "birdy"}})
+                User.findOne({where: {pic: "bean"}})
                 .then((user)  => {
                     expect(user).not.toBeNull();
-                   // expect(user.favorite1).toBe("dubstep");
+                    expect(user.favorite1).toBe("dubstep");
                     done();
                 })
                 .catch((err) => {
@@ -129,8 +143,6 @@ describe("user : routes", () => {
                 });
             });
         });
-        
     });
-
-    describe("/users/")
 })
+

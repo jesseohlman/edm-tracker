@@ -6,6 +6,7 @@ const songController = require("../controllers/songController");
 router.get("/songs/new", songController.newForm);
 router.post("/songs/create", songController.create);
 router.post("/songs/play", songController.countPlays);
+//create test for /songs/play
 
 
 router.get("/songs/topDubstep", songController.topDubstep);

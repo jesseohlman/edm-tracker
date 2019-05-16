@@ -8,7 +8,7 @@ module.exports = {
 
         User.findOne({where: {email: req.body.email}})
         .then((user) => {
-            if(!user){
+            if(user === null){
                 User.create({
                     username: req.body.username,
                     email: req.body.email,
