@@ -5,7 +5,7 @@
   "main": "\u001b[D\u001b[B\u001bserver.js)",
   "scripts": {
     "test": "set NODE_ENV=test&& jasmine",
-    "start": "node src/server.js" 
+    "start": "node src/server.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "express-validator": "^5.3.1",
     "http": "0.0.0",
     "morgan": "^1.9.1",
+    "mysql2": "^1.6.5",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg": "^7.11.0",
