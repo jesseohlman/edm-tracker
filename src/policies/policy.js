@@ -29,6 +29,6 @@ module.exports = class Authorizer {
     }
 
     update() {
-        return this.new() && this.song;
+        return this.new() && !!this.song;
     }
 }
