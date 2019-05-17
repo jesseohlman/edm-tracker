@@ -3,7 +3,7 @@
         <a class="btn btn-primary" href="/">Home</a>
         <% if(currentUser){ %> 
             <a class="btn btn-primary" href="/users/profile">Profile(!)</a>
-            <% if(currentUser.role === "member"){ %>
+            <% if(currentUser.role === "admin"){ %>
                 <a class="btn btn-primary" href="/songs/new">Add a song</a>
             <% } %>
         <% } else { %>

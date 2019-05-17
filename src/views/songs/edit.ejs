@@ -1,0 +1,44 @@
+<html>
+<head>
+    <% include ../static/partials/header.ejs %>
+    <% include ../static/partials/navbar.ejs %>
+
+</head>
+
+<body>
+
+        <% include ../static/partials/messages.ejs %>
+
+        <h1>Edit song</h1>
+    <form method="post" action="/songs/<%= song.id %>/update">
+        <div class="form-group">
+            <label for="name">Song name:</label>
+            <input type="text" name="name" class="form-control"/>
+        </div>
+
+        <div class="form-group">
+            <label for="artist">Artist:</label>
+            <input type="text"  name="artist" class="form-control"/>
+        </div>
+
+        <div class="form-group">
+            <label for="genre"> Genre:</label>
+            <select name="genre" class="form-control">
+                <option value="dubstep">Dubstep</option>
+                <option value="house">House</option>
+                <option value="psytrance">Psyrance</option>
+                <option value="d&b">D&B</option>
+                <option value="experimental">Experimental</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="sound">SoundCloud embed id:</label>
+            <input type="text" name="sound" class="form-control"/>
+        </div>
+
+        <button name="song" value="<%= song %>" type="submit" class="btn btn-primary">Update Song</button>
+    </form>
+</body>
+<% include ../static/partials/baseScripts.ejs %>
+</html>

@@ -97,4 +97,49 @@ describe("songs : routes", () => {
             })
         });
     });
+
+    describe("POST /songs/:id/delete", () => {
+        it("should delete the song", (done) => {
+            request.post(`${base}/songs/${this.song.id}/delete`, (err, res, body) => {
+                Song.findOne({where: {id: 1}})
+                .then((song) => {
+                    expect(song).toBeNull();
+                    done();
+                });
+            });
+        });
+    });
+
+    describe("POST /songs/:id/update", () => {
+        it("should update the song", (done) => {
+            const options = {
+                url: `${base}/songs/${this.song.id}/update`,
+                form: {
+                    name: "updated"
+                }
+            };
+
+            request.post(options, (err, res, body) => {
+                Song.findOne({where: {id: this.song.id}})
+                .then((song) => {
+                    expect(song.name).toBe("updated");
+                    expect(song.sound).toBe(this.song.sound);
+                    done();
+                })
+                .catch((err) => {
+                    console.log(err);
+                    done();
+                });
+            });
+        });
+    });
+
+    describe("GET /songs/:id/edit", () => {
+        it("should render a view to edit a song", (done) => {
+            request.get(`${base}/songs/${this.song.id}/edit`, (err, res, body) => {
+                expect(body).toContain("Edit");
+                done();
+            })
+        })
+    })
 })

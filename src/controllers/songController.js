@@ -18,8 +18,41 @@ module.exports = {
         res.render("songs/addSong")
     },
 
-    countPlays(req, res, next){
+    delete(req, res, next) {
+        songQueries.deleteSong(req, (err, song) => {
+            if(err){
+                req.flash("error", err);
+                res.redirect("back");
+            } else {
+                res.redirect("back");
+            }
+        })
+    },
+
+    edit(req, res, next){
+        songQueries.getSong(req.params.id, (err, song) => {
+            if(err){
+                req.flash("error", err);
+                res.redirect("back");
+            } else {
+                res.render("songs/edit", {song});
+            }
+        })
+    },
+
+    update(req, res, next){
         songQueries.updateSong(req, (err, song) => {
+            if(err){
+                req.flash("error", err);
+                res.redirect("/");
+            } else {
+                res.redirect("/");
+            }
+        })
+    },
+
+    countPlays(req, res, next){
+        songQueries.updateSongCounts(req, (err, song) => {
             if(err){
                 req.flash("error", err);
                 res.redirect("back");

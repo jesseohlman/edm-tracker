@@ -13,14 +13,33 @@
                         </div>
                     </form>
                     <% if(typeof currentUser !== 'undefined') { %>
+
+                        <% if(currentUser.role === 'admin') { %>
+                            <div class="float-left">
+                                <form action="/songs/<%= song.id %>/delete" method="POST">
+                                    <input type="hidden"  value="<%= song %>"  name="song"/>
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                </form>
+
+                                
+                                    <a href="/songs/<%= song.id %>/edit" class="btn btn-warning">Edit</a>
+                                
+                            </div>
+                        <% } %>
+
+
                         <% if(song.getFavorites(currentUser.id)) { %> 
-                            <form action="/songs/unfavorite" method="POST">
-                                <button type="submit" name="songId" value="<%= song.id %>" class="btn btn-danger">Unfavorite</button>
-                            </form>
+                            <div class="float-left">
+                                <form action="/songs/unfavorite" method="POST">
+                                    <button type="submit" name="songId" value="<%= song.id %>" class="btn btn-danger">Unfavorite</button>
+                                </form>
+                            </div>
                         <% } else { %> 
-                            <form action="/songs/favorite" method="POST">
-                                <button type="submit" name="songId" value="<%= song.id %>" class="btn btn-primary float-left">Favorite</button>
-                            </form>
+                            <div class="float-left">
+                                <form action="/songs/favorite" method="POST">
+                                    <button type="submit" name="songId" value="<%= song.id %>" class="btn btn-primary float-left">Favorite</button>
+                                </form>
+                            </div>
                         <% } %>
                     <% } %>
                     <div>number of plays: <%= song.plays %></div>
