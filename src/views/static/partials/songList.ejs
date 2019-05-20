@@ -41,6 +41,10 @@
                                 </form>
                             </div>
                         <% } %>
+
+                        <form action="/users/playlist/add" method="POST">
+                            <button type="submit" name="songId" value="<%= song.id %>" class="btn btn-primary">Add to Playlist</button>
+                        </form>
                     <% } %>
                     <div>number of plays: <%= song.plays %></div>
                 </div>

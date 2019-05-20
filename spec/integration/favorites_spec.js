@@ -1,11 +1,12 @@
 const request = require("request");
 const sequelize = require("../../src/db/models").sequelize;
 const base = "http://localhost:3000";
+const server = require("../../src/server");
 
 const Favorite = require("../../src/db/models").Favorite;
 const User = require("../../src/db/models").User;
 const Song = require("../../src/db/models").Song;
-const server = require("../../src/server");
+
 
 
 describe("favorite : routes", () => {

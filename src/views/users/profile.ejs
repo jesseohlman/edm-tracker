@@ -16,7 +16,10 @@
         <p>profile pic here <%= currentUser.pic %> picture</p>
         <div>favorite genres: <%= currentUser.favorite1 %> <%= currentUser.favorite2 %> <%= currentUser.favorite3 %></div>
         <a href="/users/customize" class="card-link">Update your info</a>
-        <a href="/users/profile/favorites" class="card-link">View your favorited songs</a>
+        <a href="/users/profile/favorites" class="card-link">Favorites</a>
+        <form action="/users/playlist/playlists" method="POST">
+            <button type="submit" class="btn btn-primary">Playlits</button>
+        </form>
 
       </div>
   </div>
