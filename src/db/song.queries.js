@@ -81,8 +81,7 @@ module.exports = {
         var currentSong = req.body.song;
 
         req.body.song.Update({
-            playCount: req.body.play || currentSong.playCount,
-            favoriteCount: req.body.favorite || currentSong.favoriteCount
+            playCount: currentSong.playCount + 1,
         }).then((song) => {
             callback(null, song);
         })
