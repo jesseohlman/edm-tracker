@@ -20,8 +20,8 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Playlist.prototype.getSongs = function(){
-    if(!!this.songs) return false;
-    console.log(this.songs);
+    if(!this.songs) return false;
+    
     return this.songs;
   }
   return Playlist;

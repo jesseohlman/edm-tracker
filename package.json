@@ -38,6 +38,7 @@
     "passport-local": "^1.0.0",
     "pg": "^7.11.0",
     "sequelize": "^5.8.5",
-    "sequelize-cli": "^5.4.0"
+    "sequelize-cli": "^5.4.0",
+    "soundcloud-widget": "^0.2.1"
   }
 }

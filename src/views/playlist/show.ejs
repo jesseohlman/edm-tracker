@@ -8,16 +8,25 @@
 <body>
 
     <% include ../static/partials/messages.ejs %>
-<div><%= playlist.getSongs() %></div>
+
+    <div>
+        <form action="/users/playlist/playlists/<%= playlist.id %>/delete" method="GET">
+            <button type="submit" class="btn btn-danger">delete playlist</button>
+        </form>
+    </div>
     <% if(playlist.getSongs()){ %>
-        <% songs.forEach((song) => { %>
+        <% playlist.getSongs().forEach((song) => { %>
             <div >
+                
                 <form action="/songs/play" method="POST" id="myform">
                     <input type="hidden" name="song" value="<%= song %>"/>
                     <input type="hidden" name="play" value="play"/>
                     <div onclick="document.getElementById('myform').submit()">
                         <iframe type="submit" class="float-left" width="75%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<%= song.sound %>&color=%23387187&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
                     </div>
+                </form>
+                <form action="/users/playlist/playlists/<%= playlist.id %>/remove" method="POST">
+                    <button type="submit" value="<%= song.id %>" name="songId" class="btn btn-danger">remove</button>
                 </form>
         <% }) %>
     <% } %>

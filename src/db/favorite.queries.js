@@ -11,7 +11,6 @@ module.exports = {
             callback(null, favorite);
         })
         .catch((err) => {
-            console.log(err);
             callback(err);
         })
     },

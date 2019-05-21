@@ -28,14 +28,26 @@ module.exports = {
      },
 
      addSong(req, callback){
-        PlaylistItem.create({
+        PlaylistItem.findOne({where: {
             playlistId: req.body.playlistId,
             songId: req.body.songId
-        })
+        }})
         .then((playItem) => {
-            callback(null, playItem);
+
+            if(!playItem){
+            PlaylistItem.create({
+                playlistId: req.body.playlistId,
+                songId: req.body.songId
+            })
+            .then((playItem) => {
+                callback(null, playItem);
+            })
+        } else {
+            callback("That song is already on that playlist");
+        }
         })
         .catch((err) => {
+            console.log(err);
             callback(err);
         })
      },
@@ -53,6 +65,29 @@ module.exports = {
          })
          .then((playlist) => {
              callback(null, playlist);
+         })
+         .catch((err) => {
+             callback(err);
+         })
+     },
+
+     removeSong(req, callback){
+         PlaylistItem.findOne({where: {songId: req.body.songId, playlistId: req.params.id}})
+         .then((playItem) => {
+             playItem.destroy({where: {id: playItem.id}})
+             .then((playItem) => {
+                callback(null, null);
+             })
+         })
+         .catch((err) => {
+             callback(err);
+         })
+     },
+
+     deletePlaylist(req, callback){
+         Playlist.destroy({where: {id: req.params.id}})
+         .then((playlist) => {
+             callback(null, null);
          })
          .catch((err) => {
              callback(err);

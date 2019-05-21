@@ -8,7 +8,7 @@ module.exports = {
                 req.flash("error", err);
                 res.redirect("/");
             } else {
-                res.redirect("/users/profile");
+                res.redirect("/users/playlist/playlists");
             }
         })
     },
@@ -35,7 +35,7 @@ module.exports = {
         playlistQueries.addSong(req, (err, playItem) => {
             if(err){
                 req.flash("error", err);
-                res.redirect("/");
+                res.redirect("/")
             } else {
                 res.redirect("/users/profile");
             }
@@ -62,5 +62,27 @@ module.exports = {
                 res.render("playlist/show", {playlist});
             }
         });
+    },
+
+    remove(req, res, next){
+        playlistQueries.removeSong(req, (err, playItem) => {
+            if(err){
+                req.flash("error", err);
+                res.redirect("/users/profile");
+            } else {
+                res.redirect("back");
+            }
+        })
+    },
+
+    delete(req, res, next){
+        playlistQueries.deletePlaylist(req, (err, playlist) => {
+            if(err){
+                req.flash("error", err);
+                res.redirect("/users/profile");
+            } else {
+                res.redirect("/users/playlist/playlists");
+            }
+        })
     }
 }
