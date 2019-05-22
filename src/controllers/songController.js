@@ -52,7 +52,7 @@ module.exports = {
     },
 
     countPlays(req, res, next){
-        songQueries.updateSongCounts(req, (err, song) => {
+        songQueries.updatePlays(req.body.songId, (err, song) => {
             if(err){
                 req.flash("error", err);
                 res.redirect("back");
@@ -64,12 +64,15 @@ module.exports = {
 
     topDubstep(req, res, next){
         songQueries.getSongs("dubstep", (err, songs) => {
-            if(err || songs.length <= 0){
-                req.flash("error", err);
-                res.redirect("back");
-            } else {
-                res.render("songs/topSongs", {songs});
-            }
+
+            songQueries.sortSongs(songs, (err, songs) =>{
+                if(err || songs.length <= 0){
+                    req.flash("error", err);
+                    res.redirect("back");
+                } else {
+                    res.render("songs/topSongs", {songs});
+                }
+            })
         })
     },
 

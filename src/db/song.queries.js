@@ -70,22 +70,27 @@ module.exports = {
         var playsArr = songs;
 
         playsArr.sort(function(a, b){
-            return a.playCount - b.playCount;
+            return b.playCount - a.playCount;
         });
 
        callback(null, playsArr);
 
     },
 
-    updateSongCounts(req, callback){
-        var currentSong = req.body.song;
+    updatePlays(songId, callback){
 
-        req.body.song.Update({
-            playCount: currentSong.playCount + 1,
-        }).then((song) => {
-            callback(null, song);
+        Song.findOne({where: {id: songId}})
+        .then((song) => {
+
+            var count = song.playCount + 1;
+            song.update({
+                playCount: count,
+            }).then((song) => {
+                callback(null, song);
+            })
         })
         .catch((err) => {
+            console.log(err);
             callback(err);
         })
 
