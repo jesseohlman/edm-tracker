@@ -8,8 +8,8 @@
 <body>
 
         <% include ../static/partials/messages.ejs %>
-
-        <h1>Add a new song to the library</h1>
+<div style="width: 50%; margin: 0 auto">
+    <h1 class="center">Add a new song</h1>
     <form method="post" action="/songs/create">
         <div class="form-group">
             <label for="name">Song name:</label>
@@ -39,6 +39,8 @@
 
         <button type="submit" class="btn btn-primary">Add Song</button>
     </form>
+</div>
 </body>
+
 <% include ../static/partials/baseScripts.ejs %>
 </html>

@@ -1,25 +1,47 @@
-<div>
-    <nav>
-        <a class="btn btn-primary" href="/">Home</a>
+<link rel="stylesheet" type="text/css" href="/css/navbar.css">
+
+<nav class="navbar navbar-inverse navbar-light" style="background-color: #c4e1ff;">
+    <div class="container-fluid">
+
+        
+            <a class="nav-item text-dark" href="/">Home</a>
         <% if(currentUser){ %> 
-            <a class="btn btn-primary" href="/users/profile">Profile(!)</a>
+            <a class="nav-item text-dark" href="/users/logout">Sign Out</a>
+            <a class="nav-item text-dark" href="/users/profile">Profile</a>
             <% if(currentUser.role === "admin"){ %>
-                <a class="btn btn-primary" href="/songs/new">Add a song</a>
+                <a class="nav-item text-dark" href="/songs/new">Add song</a>
             <% } %>
         <% } else { %>
-            <a class="btn btn-primary" href="/users/signinForm">Sign In</a>
-            <a class="btn btn-primary" href="/users/signup">Sign Up</a>
+            <a class="nav-item text-dark" href="/users/signinForm">Sign In</a>
+            <a class="nav-item text-dark" href="/users/signup">Sign Up</a>
 
         <% } %>
 
+        <ul class="nav navbar-nav">
+        <a class="dropdown-toggle text-dark" data-toggle="dropdown" href="/">Catagories
+            <span class="caret"></span></a>
 
+                    <ul class="dropdown-menu">
+                        <li class="dropdown">
+                            <li class="nav-item">
+                                <a class="nav-item text-dark" href="/songs/topdubstep">Dubstep</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-item text-dark" href="/songs/tophouse">House</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-item text-dark" href="/songs/topsytrance">Psytrance</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-item text-dark" href="/songs/topdandb">D&B</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-item text-dark" href="/songs/topexperimental">Experimental</a>
+                            </li>
+                        </li>
+                    </ul>
 
-        <a class="btn btn-primary" href="/songs/topDubstep">Dubstep</a>
-        <a class="btn btn-primary" href="/songs/topHouse">House</a>
-        <a class="btn btn-primary" href="/songs/topPsytrance">Psytrance</a>
-        <a class="btn btn-primary" href="/songs/topD&B">D&B</a>
-        <a class="btn btn-primary" href="/songs/topExperimental">Experimental</a>
+        </ul>
+    </div>
+</nav>
 
-
-    </nav>
-</div>

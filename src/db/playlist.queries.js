@@ -58,7 +58,7 @@ module.exports = {
                  model: Song,
                  as: "songs",
                  required: false,
-                 attributes: ['id', 'sound', 'name', 'genre', 'artist'],
+                 attributes: ['id', 'sound', 'name', 'playCount', 'genre', 'artist'],
                  through: { attributes: []}
              }],
              where: {id: playlistId}

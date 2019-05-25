@@ -7,6 +7,7 @@ router.get("/users/customize", userController.customize);
 router.get("/users/signup", userController.signup);
 router.get("/users/signinForm", userController.signinForm);
 router.get("/users/profile", userController.profile);
+router.get("/users/logout", userController.logout);
 router.post("/users/create", validation.userValidate, userController.create);
 router.post("/users/update", userController.update);
 router.post("/users/signin", userController.signin);

@@ -11,9 +11,10 @@ module.exports = {
                 res.redirect("back");
             } else {
                 //allows for req.user access
-                passport.authenticate('local', { failureRedirect: '/users/signup' })
+                passport.authenticate("local")(req, res, () => {
                 req.flash("notice", "You've successfully created an account!");
                 res.redirect("/");
+                });
             }
         })
     },
@@ -48,5 +49,11 @@ module.exports = {
 
     profile(req, res, next){
         res.render("users/profile");
+    },
+
+    logout(req, res, next){
+        req.logout();
+
+        res.redirect("/");
     }
 }

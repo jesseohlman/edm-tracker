@@ -13,11 +13,11 @@ router.post("/songs/play", songController.countPlays);
 router.get("/songs/:id/edit", songController.edit);
 
 
-router.get("/songs/topDubstep", songController.topDubstep);
-router.get("/songs/topHouse", songController.topHouse);
-router.get("/songs/topPsytrance", songController.topPsytrance);
-router.get("/songs/topExperimental", songController.topExperimental);
-router.get("/songs/topD&B", songController.topDandB);
+router.get("/songs/topdubstep", songController.topDubstep);
+router.get("/songs/tophouse", songController.topHouse);
+router.get("/songs/toppsytrance", songController.topPsytrance);
+router.get("/songs/topexperimental", songController.topExperimental);
+router.get("/songs/topdandb", songController.topDandB);
 
 
 module.exports = router;

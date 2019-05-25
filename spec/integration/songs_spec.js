@@ -88,7 +88,7 @@ describe("songs : routes", () => {
 
         describe("/songs/top[genre]", () => {
             it("should render a view with the top songs of the genre", (done) => {
-                request(`${base}/songs/topDubstep`, (err, res, body) => {
+                request(`${base}/songs/topdubstep`, (err, res, body) => {
                     expect(body).toContain("Top dubstep");
                     done();
                 })

@@ -7,26 +7,32 @@
 
 <body>
 
-        <% include ../static/partials/messages.ejs %>
+    <% include ../static/partials/messages.ejs %>
 
-    <form method="post" action="/users/create">
-        <div class="form-group">
-            <label for="username">username:</label>
-            <input type="text" name="username" class="form-control"/>
-        </div>
+    <div style="margin: 0 auto; width: 50%;">
+        <h1 class="center">Sign Up</h1>
+        <form method="post" action="/users/create">
+            <div class="form-group">
+                <label for="username">username:</label>
+                <input type="text" name="username" class="form-control"/>
+                <small class="text-muted">username must be at least 3 characters long</small>
+            </div>
 
-        <div class="form-group">
-            <label for="email">email:</label>
-            <input type="email" name="email" class="form-control" aria-describedby="emailHelp"/>
-        </div>
+            <div class="form-group">
+                <label for="email">email:</label>
+                <input type="email" name="email" class="form-control" aria-describedby="emailHelp"/>
+                <small class="text-muted">email must be valid</small>
+            </div>
 
-        <div class="form-group">
-            <label for="password">password:</label>
-            <input type="password" name="password" class="form-control" aria-describedby="passwordHelp"/>
-        </div>
+            <div class="form-group">
+                <label for="password">password:</label>
+                <input type="password" name="password" class="form-control" aria-describedby="passwordHelp"/>
+                <small class="text-muted">password must be at least 8 characters in length</small>
+            </div>
 
-        <button type="submit" class="btn btn-primary">Sign Up</button>
-    </form>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+    </div>
 </body>
 <% include ../static/partials/baseScripts.ejs %>
 </html>

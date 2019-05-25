@@ -120,6 +120,24 @@ module.exports = {
                 callback("Unauthorized");
             }
         })
+    },
+
+    getTop10(callback){
+        Song.findAll({})
+        .then((allSongs) => {
+            var unsorted = allSongs;
+
+            unsorted.sort(function(a, b){
+                return b.playCount - a.playCount;
+            });
+
+            var sorted = unsorted.slice(0, 10);
+
+            callback(null, sorted);
+        })
+        .catch((err) => {
+            callback(err);
+        })
     }
 
 }

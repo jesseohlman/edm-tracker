@@ -5,21 +5,24 @@
 </head>
 
 <body>
-        <% include ../static/partials/messages.ejs %>
+    <% include ../static/partials/messages.ejs %>
+    
+    <div style="margin: 0 auto; width: 50%;">
+        <h1 class="center">Sign In</h1>
+        <form method="post" action="/users/signin">
+                <div class="form-group">
+                    <label for="email">email:</label>
+                    <input type="email" name="email" class="form-control" aria-describedby="emailHelp"/>
+                </div>
 
-    <form method="post" action="/users/signin">
-        <div class="form-group">
-            <label for="email">email:</label>
-            <input type="email" name="email" class="form-control" aria-describedby="emailHelp"/>
-        </div>
+                <div class="form-group">
+                    <label for="password">password:</label>
+                    <input type="password" name="password" class="form-control" aria-describedby="passwordHelp"/>
+                </div>
 
-        <div class="form-group">
-            <label for="password">password:</label>
-            <input type="password" name="password" class="form-control" aria-describedby="passwordHelp"/>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Sign In</button>
-    </form>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+        </form>
+    </div>
 </body>
 <% include ../static/partials/baseScripts.ejs %>
 

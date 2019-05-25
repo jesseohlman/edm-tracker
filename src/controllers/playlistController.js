@@ -59,7 +59,8 @@ module.exports = {
                 req.flash("error", err);
                 res.redirect("/users/profile");
             } else {
-                res.render("playlist/show", {playlist});
+                const songs = playlist.getSongs();
+                res.render("playlist/show", {playlist, songs});
             }
         });
     },
