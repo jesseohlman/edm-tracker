@@ -1,47 +1,36 @@
-<link rel="stylesheet" type="text/css" href="/css/navbar.css">
-
-<nav class="navbar navbar-inverse navbar-light" style="background-color: #c4e1ff;">
-    <div class="container-fluid">
-
+<div style="border-width: 5px; border-bottom-style: outset; border-top-style: outset; border-left-style: inset; border-right-style: inset">
+<nav class="navbar navbar-light" style="background-color: #eff5ff;">
         
             <a class="nav-item text-dark" href="/">Home</a>
         <% if(currentUser){ %> 
-            <a class="nav-item text-dark" href="/users/logout">Sign Out</a>
-            <a class="nav-item text-dark" href="/users/profile">Profile</a>
+            <a class="nav-item nav-link text-dark" href="/users/logout">Sign Out</a>
+            <a class="nav-item nav-link text-dark" href="/users/profile">Profile</a>
             <% if(currentUser.role === "admin"){ %>
-                <a class="nav-item text-dark" href="/songs/new">Add song</a>
+                <a class="nav-item nav-link text-dark" href="/songs/new">Add song</a>
             <% } %>
         <% } else { %>
-            <a class="nav-item text-dark" href="/users/signinForm">Sign In</a>
-            <a class="nav-item text-dark" href="/users/signup">Sign Up</a>
+            <a class="nav-item nav-link text-dark" href="/users/signinForm">Sign In</a>
+            <a class="nav-item nav-link text-dark" href="/users/signup">Sign Up</a>
 
         <% } %>
 
-        <ul class="nav navbar-nav">
-        <a class="dropdown-toggle text-dark" data-toggle="dropdown" href="/">Catagories
-            <span class="caret"></span></a>
+        <a class="nav-item text-dark" href="#">Catagories:
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button></a>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link text-dark" href="/songs/topdubstep">Dubstep</a>
+                    <a class="nav-item nav-link text-dark" href="/songs/tophouse">House</a>
+                    <a class="nav-item nav-link text-dark" href="/songs/toppsytrance">Psytrance</a>
+                    <a class="nav-item nav-link text-dark" href="/songs/topdandb">D&B</a>
+                    <a class="nav-item nav-link text-dark" href="/songs/topexperimental">Experimental</a>
+                </div>
+            </div>
 
-                    <ul class="dropdown-menu">
-                        <li class="dropdown">
-                            <li class="nav-item">
-                                <a class="nav-item text-dark" href="/songs/topdubstep">Dubstep</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-item text-dark" href="/songs/tophouse">House</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-item text-dark" href="/songs/toppsytrance">Psytrance</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-item text-dark" href="/songs/topdandb">D&B</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-item text-dark" href="/songs/topexperimental">Experimental</a>
-                            </li>
-                        </li>
-                    </ul>
-
-        </ul>
-    </div>
+            <form action="/search" method="POST">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg></button>
+            </form>
 </nav>
-
+</div>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ./partials/header.ejs %>
+    <% include ./partials/navbar.ejs %>
+
+</head>
+
+<body>
+    <% include ./partials/messages.ejs %>
+
+    <h2>Search results for "<span class="font-weight-bold"><%= search %></span>"..</h2>
+
+    <% if(songs){ %>
+        <div>
+            <% include ./partials/songList.ejs %>
+        </div>
+    <% } else { %>
+        <p>There were no results found by your search</p>
+    <% } %>
+</body>
+
+<% include ./partials/baseScripts.ejs %>
+
+</html>

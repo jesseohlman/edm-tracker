@@ -10,5 +10,18 @@ module.exports = {
                 res.render("static/index", {songs});
             }
         })
+    },
+
+    search(req, res, next){
+        const search = req.body.search;
+
+        songQueries.search(search, (err, songs) => {
+            if(err){
+                req.flash("error", err);
+                res.redirect("/");
+            } else {
+                res.render("static/search", {songs, search});
+            }
+        })
     }
 }

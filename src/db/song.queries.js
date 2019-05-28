@@ -1,3 +1,8 @@
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
+
+const sequelize = require("./models").sequelize;
+
 const Song = require("./models").Song;
 const Favorite = require("../db/models").Favorite;
 const Authorizer = require("../policies/policy");
@@ -136,6 +141,30 @@ module.exports = {
             callback(null, sorted);
         })
         .catch((err) => {
+            callback(err);
+        })
+    },
+
+    search(search, callback){
+        const searchValue = search.toLowerCase();
+
+        Song.findAll({where: {
+            [Op.or]: [
+                {
+                    name: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + searchValue + '%')
+                },
+                {
+                    artist:  sequelize.where(sequelize.fn('LOWER', sequelize.col('artist')), 'LIKE', '%' + searchValue + '%')
+                },
+                {
+                    genre: sequelize.where(sequelize.fn('LOWER', sequelize.col('genre')), 'LIKE', '%' + searchValue + '%')
+                }
+        ]}})
+        .then((songs) => {
+            callback(null, songs);
+        })
+        .catch((err) => {
+            console.log(err);
             callback(err);
         })
     }

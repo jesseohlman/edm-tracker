@@ -14,11 +14,11 @@
                             <div class="float-left">
                                 <form action="/songs/<%= song.id %>/delete" method="POST">
                                     <input type="hidden"  value="<%= song %>"  name="song"/>
-                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                    <button  type="submit" class="btn btn-danger btn-sm">Delete</button>
                                 </form>
                             </div>
                             <div class="float-left">
-                                    <a href="/songs/<%= song.id %>/edit" class="btn btn-warning">Edit</a>
+                                    <a href="/songs/<%= song.id %>/edit" class="btn btn-warning btn-sm">Edit</a>
                             </div>
                             
                         <% } %>
@@ -27,19 +27,19 @@
                         <% if(song.getFavorites(currentUser.id)) { %> 
                             <div class="float-left">
                                 <form  action="/songs/unfavorite" method="POST">
-                                    <button type="submit" name="songId" value="<%= song.id %>" class="btn btn-danger">Unfavorite</button>
+                                    <button type="submit" name="songId" value="<%= song.id %>" class="btn btn-danger btn-sm">Unfavorite</button>
                                 </form>
                             </div>
                         <% } else { %> 
                             <div class="float-left">
                                 <form action="/songs/favorite" method="POST">
-                                    <button  type="submit" name="songId" value="<%= song.id %>" class="btn btn-primary">Favorite</button>
+                                    <button  type="submit" name="songId" value="<%= song.id %>" class="btn btn-primary btn-sm">Favorite</button>
                                 </form>
                             </div>
                         <% } %>
                         <div class="float-left">
                             <form  action="/users/playlist/add" method="POST">
-                                <button type="submit" name="songId" value="<%= song.id %>" class="btn btn-primary">Add to Playlist</button>
+                                <button type="submit" name="songId" value="<%= song.id %>" class="btn btn-primary btn-sm">Add to Playlist</button>
                             </form>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
             <script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
             <script type="text/javascript">
                 (function(){
-                    var widgets = document.querySelectorAll('iframe');
+                    var widgets = document.querySelectorAll('#widget');
 
                     widgets.forEach((widget, index) => {
                         var scWidget = SC.Widget(widget);
