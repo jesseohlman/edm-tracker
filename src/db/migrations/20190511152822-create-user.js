@@ -32,11 +32,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true
       },
-      pic: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: "blank"
-      },
       role: {
         type: Sequelize.STRING,
         allowNull: false,

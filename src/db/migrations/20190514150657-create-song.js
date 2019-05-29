@@ -24,11 +24,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      favoriteCount: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-      },
       playCount: {
         type: Sequelize.INTEGER,
         allowNull: false,

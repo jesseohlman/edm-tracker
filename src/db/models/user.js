@@ -25,11 +25,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true
     },
-    pic:  {
-      type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: "blank"
-    },
     role:  {
       type: DataTypes.STRING,
       allowNull: false,
