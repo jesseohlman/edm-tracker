@@ -13,7 +13,7 @@ module.exports = {
                 //allows for req.user access
                 passport.authenticate("local")(req, res, () => {
                 req.flash("notice", "You've successfully created an account!");
-                res.redirect("/");
+                res.redirect("/users/customize");
                 });
             }
         })

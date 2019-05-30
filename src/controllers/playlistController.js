@@ -8,7 +8,19 @@ module.exports = {
                 req.flash("error", err);
                 res.redirect("/");
             } else {
-                res.redirect("/users/playlist/playlists");
+                if(typeof req.body.songId !== 'undefined'){
+                    playlistQueries.addSong(playlist.id, req.body.songId, (err, playItem) => {
+
+                        if(err){
+                            req.flash("error", err);
+                            res.redirect("/");
+                        } else {
+                            res.redirect("/users/playlist/playlists");
+                        }
+                    })
+                } else {
+                    res.redirect("/users/playlist/playlists");
+                }
             }
         })
     },
@@ -32,12 +44,12 @@ module.exports = {
     },
 
     addSong(req, res, next){
-        playlistQueries.addSong(req, (err, playItem) => {
+        playlistQueries.addSong(req.body.playlistId, req.body.songId, (err, playItem) => {
             if(err){
                 req.flash("error", err);
                 res.redirect("/")
             } else {
-                res.redirect("/users/profile");
+                res.redirect("/users/playlist/playlists");
             }
         })
     },

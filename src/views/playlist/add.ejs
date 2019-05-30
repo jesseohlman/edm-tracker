@@ -9,22 +9,25 @@
 
         <% include ../static/partials/messages.ejs %>
     <h2>New Playlist</h2>
-    <form method="post" action="/users/playlist/create">
-        <div class="form-group">
+    <form method="post" class="float-left" style="margin: 5px; width: 50%;" action="/users/playlist/create">
+        <div class="form-group" >
             <label for="name">New Playlist:</label>
             <input type="text" name="name" placeholder="enter playlist name" class="form-control"/>
+            <input type="hidden" value="<%= song.id %>" name="songId"/>
         </div>
 
         <button type="submit" class="btn btn-primary">Create New</button>
-    </form>
+    </form><br><br><br><br><br><br>
+
 
     <% if(playlists){ %>
         <% playlists.forEach((playlist) => { %>
-            <div>
+            <div style="margin: 5px">
                 <form method="POST" action="/users/playlist/addsong">
                     <h2><%= playlist.name %></h2>
                     <input type="hidden" value="<%= playlist.id %>" name="playlistId"/>
-                    <button type="submit" value="<%= song.id %>" name="songId" class="btn btn-primary">Add</button>
+                    <input type="hidden" value="<%= song.id %>" name="songId"/>
+                    <button type="submit" class="btn btn-primary">Add</button>
                 </form>
             </div>
         <% }) %>

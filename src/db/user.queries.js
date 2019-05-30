@@ -29,10 +29,10 @@ module.exports = {
         User.findOne({where: {id: req.user.id}})
         .then((user) => {
         user.update({
+            username: req.body.username,
             favorite1: req.body.favorite1,
             favorite2: req.body.favorite2,
-            favorite3: req.body.favorite3,
-            pic: req.body.pic
+            favorite3: req.body.favorite3
         }).then((user) => {
             callback(null, user)
         })

@@ -18,7 +18,15 @@ module.exports = {
         })
     },
      getPlaylists(req, callback){
-         Playlist.findAll({where: {userId: req.user.id}})
+         Playlist.findAll({
+            include: [{
+                model: Song,
+                as: "songs",
+                required: false,
+                attributes: ['id', 'sound', 'name', 'playCount', 'genre', 'artist'],
+                through: { attributes: []}
+            }],
+            where: {userId: req.user.id}})
          .then((playlists) => {
              callback(null, playlists);
          })
@@ -27,17 +35,17 @@ module.exports = {
          })
      },
 
-     addSong(req, callback){
+     addSong(playlistId, songId, callback){
         PlaylistItem.findOne({where: {
-            playlistId: req.body.playlistId,
-            songId: req.body.songId
+            playlistId: playlistId,
+            songId: songId
         }})
         .then((playItem) => {
 
             if(!playItem){
             PlaylistItem.create({
-                playlistId: req.body.playlistId,
-                songId: req.body.songId
+                playlistId: playlistId,
+                songId: songId
             })
             .then((playItem) => {
                 callback(null, playItem);
@@ -47,7 +55,6 @@ module.exports = {
         }
         })
         .catch((err) => {
-            console.log(err);
             callback(err);
         })
      },
