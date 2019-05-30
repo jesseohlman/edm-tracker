@@ -22,7 +22,11 @@
         <% playlists.forEach((playlist, index) => { %>
             <div style="margin: 5px">
                 <a href="/users/playlist/playlists/<%= playlist.id %>" class="btn btn-success btn-lg"><%= playlist.name %></a>
-                <small>- <%= playlist.getSongs().length %> songs</small>
+                <% if(playlist.getSongs().length === 1){ %>
+                    <small>- <%= playlist.getSongs().length %> song</small>
+                <% } else { %>
+                    <small>- <%= playlist.getSongs().length %> songs</small>
+                <% } %>
             </div><br>
         <% }) %>
     <% } %>
